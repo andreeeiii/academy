@@ -12,13 +12,11 @@ import static java.util.Objects.isNull;
 @Service
 public class AccountValidator {
 
-    // TODO implement validator classes
-
     /**
      * validates account fields
      * @param account given account
      */
-    void validate(Account account) {
+    public void validate(Account account) {
 
         if (isNull(account.getUsername())) {
             throw new InvalidAccountInputException("Username cannot be empty");

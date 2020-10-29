@@ -2,7 +2,11 @@ package com.academy.learning.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
+
+import static javax.persistence.EnumType.*;
 
 @Entity
 @Table(name = "User")
@@ -13,6 +17,7 @@ public class User extends Account {
     @Column(name = "points")
     private int points;
     @Column(name = "membership")
+    @Enumerated(value = STRING)
     private Membership membership;
 
     public String getName() {
