@@ -8,6 +8,7 @@ import javax.persistence.Table;
 @Table(name = "Trainer")
 public class Trainer extends Account {
 
+    // TODO add database restriction for unique name
     @Column(name = "name")
     private String name;
     @Column(name = "rating")

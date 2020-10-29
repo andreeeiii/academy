@@ -12,6 +12,7 @@ import static javax.persistence.EnumType.*;
 @Table(name = "User")
 public class User extends Account {
 
+    // TODO add database restriction for unique name
     @Column(name = "name")
     private String name;
     @Column(name = "points")

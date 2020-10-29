@@ -19,6 +19,7 @@ import static javax.persistence.InheritanceType.TABLE_PER_CLASS;
 @Inheritance(strategy = JOINED)
 public class Account {
 
+    // TODO add database restriction for unique username, password, email
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = AUTO)
