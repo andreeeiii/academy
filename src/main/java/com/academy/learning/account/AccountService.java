@@ -28,8 +28,6 @@ public class AccountService {
 
         accountValidator.validate(account);
 
-        // TODO implement password hashing
-
         return accountRepository.save(account);
     }
 }

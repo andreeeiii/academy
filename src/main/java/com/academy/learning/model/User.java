@@ -1,26 +1,16 @@
 package com.academy.learning.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-import static javax.persistence.EnumType.*;
-
-@Entity
-@Table(name = "User")
+@DynamoDBTable(tableName = "User")
 public class User extends Account {
 
-    // TODO add database restriction for unique name
-    @Column(name = "name")
     private String name;
-    @Column(name = "points")
     private int points;
-    @Column(name = "membership")
-    @Enumerated(value = STRING)
     private Membership membership;
 
+    @DynamoDBAttribute
     public String getName() {
         return name;
     }
@@ -29,6 +19,7 @@ public class User extends Account {
         this.name = name;
     }
 
+    @DynamoDBAttribute
     public int getPoints() {
         return points;
     }
@@ -37,11 +28,21 @@ public class User extends Account {
         this.points = points;
     }
 
+    @DynamoDBAttribute
     public Membership getMembership() {
         return membership;
     }
 
     public void setMembership(Membership membership) {
         this.membership = membership;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", points=" + points +
+                ", membership=" + membership +
+                '}';
     }
 }

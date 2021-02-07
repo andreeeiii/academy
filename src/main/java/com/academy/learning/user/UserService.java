@@ -4,6 +4,9 @@ import com.academy.learning.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Service in charge of bussiness-side related User activities
  */
@@ -29,5 +32,15 @@ public class UserService {
         userValidator.validate(user);
 
         return userRepository.save(user);
+    }
+
+    String getUserById(Integer id) {
+
+        return userRepository.getOne(id);
+    }
+
+    List<User> getAllUsers() {
+
+        return userRepository.findAll();
     }
 }

@@ -1,21 +1,16 @@
 package com.academy.learning.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-@Entity
-@Table(name = "Trainer")
+@DynamoDBTable(tableName = "Trainer")
 public class Trainer extends Account {
 
-    // TODO add database restriction for unique name
-    @Column(name = "name")
     private String name;
-    @Column(name = "rating")
     private double rating;
-    @Column(name = "details")
     private String details;
 
+    @DynamoDBAttribute
     public String getName() {
         return name;
     }
@@ -24,6 +19,7 @@ public class Trainer extends Account {
         this.name = name;
     }
 
+    @DynamoDBAttribute
     public double getRating() {
         return rating;
     }
@@ -32,6 +28,7 @@ public class Trainer extends Account {
         this.rating = rating;
     }
 
+    @DynamoDBAttribute
     public String getDetails() {
         return details;
     }

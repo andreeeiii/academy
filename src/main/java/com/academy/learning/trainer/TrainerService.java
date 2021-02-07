@@ -14,7 +14,7 @@ public class TrainerService {
     private final TrainerValidator trainerValidator;
 
     @Autowired
-    public TrainerService(TrainerRepository trainerRepository, TrainerValidator trainerValidator) {
+    public TrainerService(TrainerValidator trainerValidator, TrainerRepository trainerRepository) {
         this.trainerRepository = trainerRepository;
         this.trainerValidator = trainerValidator;
     }
