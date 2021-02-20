@@ -19,9 +19,15 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    @RequestMapping(path = "/account", method = POST, consumes = APPLICATION_JSON)
+    @PostMapping(path = "/account", consumes = APPLICATION_JSON)
     public Account saveAccount(@RequestBody Account account) {
 
         return accountService.createAccount(account);
+    }
+
+    @GetMapping(path = "/account", produces = APPLICATION_JSON)
+    public String getByUsername(@RequestParam String username) {
+
+        return accountService.getByUsername(username);
     }
 }

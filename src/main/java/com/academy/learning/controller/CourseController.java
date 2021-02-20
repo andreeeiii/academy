@@ -1,19 +1,15 @@
 package com.academy.learning.controller;
 
+import com.academy.learning.model.Course;
 import com.academy.learning.repository.CourseRepository;
 import com.academy.learning.service.course.CourseService;
-import com.academy.learning.model.Course;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.List;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @EnableWebMvc
@@ -30,15 +26,21 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    @RequestMapping(path = "/courses", method = GET, produces = APPLICATION_JSON)
+    @GetMapping(path = "/courses", produces = APPLICATION_JSON)
     public List<Course> getAllCourses() {
 
         return courseRepository.getAll();
     }
 
-    @RequestMapping(path = "/courses", method = POST, consumes = APPLICATION_JSON)
-    public void saveCourse(@RequestBody Course course) {
+    @PostMapping(path = "/courses", consumes = APPLICATION_JSON)
+    public Course saveCourse(@RequestBody Course course) {
 
-        courseService.save(course);
+        return courseService.save(course);
+    }
+
+    @GetMapping(path = "/courses/{name}", produces = APPLICATION_JSON)
+    public String getCourseByName(@PathVariable String name) {
+
+        return courseService.getByName(name);
     }
 }

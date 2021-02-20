@@ -4,12 +4,10 @@ import com.academy.learning.model.Account;
 import com.academy.learning.model.Trainer;
 import com.academy.learning.service.trainer.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static org.springframework.http.HttpStatus.CREATED;
 
 /**
@@ -22,10 +20,16 @@ public class TrainerController {
     @Autowired
     private TrainerService trainerService;
 
-    @PostMapping(value = "/account/trainer", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/account/trainer", consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
     @ResponseStatus(value = CREATED)
-    public Account createAccount(@RequestBody Trainer trainer) {
+    public Trainer createTrainer(@RequestBody Trainer trainer) {
 
         return trainerService.createTrainer(trainer);
+    }
+
+    @GetMapping(path = "/account/trainer", produces = APPLICATION_JSON)
+    public Trainer getByName(@RequestParam String name) {
+
+        return trainerService.getByName(name);
     }
 }

@@ -27,4 +27,9 @@ public class CourseService {
 
         return courseRepository.save(course);
     }
+
+    public String getByName(String name) {
+
+        return courseRepository.getByName(name);
+    }
 }

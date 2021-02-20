@@ -31,4 +31,9 @@ public class TrainerService {
 
         return trainerRepository.save(trainer);
     }
+
+    public Trainer getByName(String name) {
+
+        return trainerRepository.getByName(name);
+    }
 }

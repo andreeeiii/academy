@@ -11,7 +11,7 @@ import java.util.List;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.web.bind.annotation.RequestMethod.*;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 /**
  * Controller in charge of User activities
@@ -27,7 +27,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping(value = "/account/user", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/account/user", consumes = APPLICATION_JSON, produces = APPLICATION_JSON)
     @ResponseStatus(value = CREATED)
     public Account createUser(@RequestBody User user) {
 
