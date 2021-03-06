@@ -1,11 +1,12 @@
 package com.academy.learning.controller;
 
-import com.academy.learning.model.Account;
 import com.academy.learning.model.Trainer;
 import com.academy.learning.service.trainer.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import java.util.List;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static org.springframework.http.HttpStatus.CREATED;
@@ -15,6 +16,7 @@ import static org.springframework.http.HttpStatus.CREATED;
  */
 @RestController
 @EnableWebMvc
+@CrossOrigin(value = "*")
 public class TrainerController {
 
     @Autowired
@@ -27,9 +29,15 @@ public class TrainerController {
         return trainerService.createTrainer(trainer);
     }
 
-    @GetMapping(path = "/account/trainer", produces = APPLICATION_JSON)
-    public Trainer getByName(@RequestParam String name) {
+    @GetMapping(path = "/account/trainer/{name}", produces = APPLICATION_JSON)
+    public Trainer getByName(@PathVariable String name) {
 
         return trainerService.getByName(name);
+    }
+
+    @GetMapping(path = "/account/trainer", produces = APPLICATION_JSON)
+    public List<Trainer> getAllTrainers() {
+
+        return trainerService.getAll();
     }
 }

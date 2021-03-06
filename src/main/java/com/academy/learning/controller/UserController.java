@@ -18,6 +18,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  */
 @RestController
 @EnableWebMvc
+@CrossOrigin(value = "*")
 public class UserController {
 
     private final UserService userService;

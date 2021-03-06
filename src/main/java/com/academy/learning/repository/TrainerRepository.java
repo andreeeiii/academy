@@ -1,6 +1,7 @@
 package com.academy.learning.repository;
 
 import com.academy.learning.exception.InvalidTrainerInputException;
+import com.academy.learning.model.Course;
 import com.academy.learning.model.Trainer;
 import com.academy.learning.model.User;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
@@ -54,5 +55,11 @@ public class TrainerRepository  {
                 .findFirst();
 
         return matchingTrainer.orElseThrow(() -> new InvalidTrainerInputException("Trainer does not exist"));
+    }
+
+    public List<Trainer> getAll() {
+
+        DynamoDBScanExpression scanExp = new DynamoDBScanExpression();
+        return this.mapper.scan(Trainer.class, scanExp);
     }
 }

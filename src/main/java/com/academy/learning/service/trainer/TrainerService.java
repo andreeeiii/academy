@@ -5,6 +5,8 @@ import com.academy.learning.repository.TrainerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Service in charge of Trainer business related operations
  */
@@ -35,5 +37,10 @@ public class TrainerService {
     public Trainer getByName(String name) {
 
         return trainerRepository.getByName(name);
+    }
+
+    public List<Trainer> getAll() {
+
+        return trainerRepository.getAll();
     }
 }

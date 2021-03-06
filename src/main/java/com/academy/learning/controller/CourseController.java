@@ -13,6 +13,7 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @RestController
 @EnableWebMvc
+@CrossOrigin(value = "*")
 public class CourseController {
 
     private final CourseRepository courseRepository;

@@ -2,6 +2,7 @@ package com.academy.learning.model;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConvertedEnum;
 
 @DynamoDBTable(tableName = "User")
 public class User extends Account {
@@ -28,7 +29,7 @@ public class User extends Account {
         this.points = points;
     }
 
-    @DynamoDBAttribute
+    @DynamoDBTypeConvertedEnum
     public Membership getMembership() {
         return membership;
     }
