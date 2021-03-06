@@ -7,5 +7,5 @@ Rest API endpoints for Academy backend logic
 # Post Course Interaction Diagram
 ![Post Course Interaction Diagram](https://github.com/andreeeiii/academy/blob/master/diagrams/SaveCourseInteractionDiagram.PNG)
 
-#Flow Diagram
+# Flow Diagram
 ![Flow Diagram](https://github.com/andreeeiii/academy/blob/master/diagrams/FlowDiagram.PNG)
